@@ -1,5 +1,6 @@
 package com.erpfinanceiro.controller;
 
+import com.erpfinanceiro.dto.DadosDetalhamentoAdmin;
 import com.erpfinanceiro.model.Admin;
 import com.erpfinanceiro.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,10 @@ public class AdminController {
     private AdminService adminService;
     
     @GetMapping // Para quando acessar GET /api/admins
-    public List<Admin> listar() {
-        return adminService.listarTodos();
+    public List<DadosDetalhamentoAdmin> listar() {
+        return adminService.listarTodos().stream()
+                .map(DadosDetalhamentoAdmin::new)
+                .toList();
     }
     
     @PostMapping // Para quando enviar dados via POST para /api/admins
