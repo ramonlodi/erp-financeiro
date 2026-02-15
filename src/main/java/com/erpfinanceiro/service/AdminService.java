@@ -21,12 +21,12 @@ public class AdminService {
     @Autowired
     private BCryptPasswordEncoder encoder;
     
-    // Método para listar todos os admins
+    //Método para listar todos os admins
     public List<Admin> listarTodos() {
         return adminRepository.findAll();
     }
     
-    // Método para salvar um novo admin
+    //Método para salvar um novo admin
     public Admin salvar(Admin admin) {
         if(adminRepository.existsByEmail(admin.getEmail())){
             throw new RuntimeException("E-mail já cadastrado!");

@@ -20,14 +20,14 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
     
-    @GetMapping // Para quando acessar GET /api/admins
+    @GetMapping //Para quando acessar GET /api/admins
     public List<DadosDetalhamentoAdmin> listar() {
         return adminService.listarTodos().stream()
                 .map(DadosDetalhamentoAdmin::new)
                 .toList();
     }
     
-    @PostMapping // Para quando enviar dados via POST para /api/admins
+    @PostMapping //Para quando enviar dados via POST para /api/admins
     public Admin criar(@RequestBody Admin admin) {
         return adminService.salvar(admin);
     }
